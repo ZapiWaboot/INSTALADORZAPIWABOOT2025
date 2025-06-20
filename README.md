@@ -1,12 +1,127 @@
 FAZENDO DOWNLOAD DO INSTALADOR & INICIANDO A PRIMEIRA INSTALAÇÃO (USAR SOMENTE PARA PRIMEIRA INSTALAÇÃO):
 
 ```bash
-sudo apt install -y git && git clone https://github.com/ZapiWaboot/INSTALADORZAPIWABOOT && sudo chmod -R 777 instalador  && cd instalador && sudo ./install_primaria
+00-ATUALIZAR O SERVIDOR
+sudo apt-get update && sudo apt-get upgrade -y && reboot
+
+
+
+01-COLOCAR O COMANDO ABAIXO
+sudo apt install -y git && git clone https://github.com/ZapiWaboot/instalador2025 && cd instalador2025 && sudo chmod -R 777 install_primaria && sudo ./install_primaria
+
+02-DIGITE O COMANDO ABAIXO
+0
+
+
+03-Insira senha para o usuario Deploy e Banco de Dados (Não utilizar caracteres especiais):
+zapiwaboot2025
+
+
+04-INSIRA O LINK DO GITHUB DO WHATICKET QUE DESEJA INSTALAR:
+https://github.com/usuariogithub/nomedapastadoseugithub.git
+
+
+05-INFORME UM NOME PARA A INSTANCIA/EMPRESA QUE SERÁ INSTALADA (NÃO UTILIZAR ESPAÇOS OU CARACTERES ESPECIAIS, UTILIZAR LETRAS MINUSCULAS):
+empresazapiwaboot
+
+
+06-INFORME A QTDE DE CONEXÃO/WHATS QUE A SUA EMPRESA PODERÁ CADASTRAR
+9999
+
+
+07-INFORME A QTD DE USUÁRIO/ATENDENTES QUE SUA EMPRESA PODERÁ CADASTRAR
+9999
+
+
+08-DIGITE O DOMÍNIO DO FRONTEND/PAINEL PARA SUA EMPRESA
+painel.seudominio.com.br
+
+
+09-DIGITE O DOMÍNIO DO BACKEND/API PARA SUA EMPRESA
+api.seudominio.com.br
+
+
+10-DIGITE A PORTA DO FRONTEND PARA SUA EMPRESA; EX: 3000 A 3999
+3000
+
+
+11-DIGITE A PORTA DO BACKEND PARA SUA EMPRESA; EX: 4000 A 4999
+4000
+
+
+12-DIGITE A PORTA DO REDIS/ANGENDAMENTO NSG PARA SUA EMPRESA
+5000
+
+
+13-COLOQUE O NOME DO SEU USUÁRIO E SENHA 
+seu usuário do git hub
+
+14-COLOQUE O TOKEN GERADO NO SEU GITHUB 
+seu token do git hub
+
+
+15-COLOQUE A SENHA DO SEU USUÁRIO DEPLOY (a mesma que definiu logo no começo da instalação)
+zapiwaboot2025
 ```
 
 
 
 ACESSANDO DIRETORIO DO INSTALADOR & INICIANDO INSTALAÇÕES ADICIONAIS (USAR ESTE COMANDO PARA SEGUNDA OU MAIS INSTALAÇÃO:
 ```bash
-cd ./instalador  && sudo ./install_instancia
+
+01-COLOCAR O COMANDO ABAIXO
+cd /home && sudo apt install -y git && git clone https://github.com/ZapiWaboot/instalador2025 instalador && sudo chmod -R 777 ./instalador && cd ./instalador && sudo ./install_primaria
+
+02-DIGITE O COMANDO ABAIXO
+0
+
+03-Insira senha para o usuario Deploy e Banco de Dados (Não utilizar caracteres especiais):
+zapiwaboot2025
+
+
+04-INSIRA O LINK DO GITHUB DO WHATICKET QUE DESEJA INSTALAR:
+https://github.com/usuariogithub/nomedapastadoseugithub.git
+
+
+05-INFORME UM NOME PARA A INSTANCIA/EMPRESA QUE SERÁ INSTALADA (NÃO UTILIZAR ESPAÇOS OU CARACTERES ESPECIAIS, UTILIZAR LETRAS MINUSCULAS):
+empresazapiwaboot
+
+
+06-INFORME A QTDE DE CONEXÃO/WHATS QUE A SUA EMPRESA PODERÁ CADASTRAR
+9999
+
+
+07-INFORME A QTD DE USUÁRIO/ATENDENTES QUE SUA EMPRESA PODERÁ CADASTRAR
+9999
+
+
+08-DIGITE O DOMÍNIO DO FRONTEND/PAINEL PARA SUA EMPRESA
+painel.seudominio.com.br
+
+
+09-DIGITE O DOMÍNIO DO BACKEND/API PARA SUA EMPRESA
+api.seudominio.com.br
+
+
+10-DIGITE A PORTA DO FRONTEND PARA SUA EMPRESA; EX: 3000 A 3999
+3001
+
+
+11-DIGITE A PORTA DO BACKEND PARA SUA EMPRESA; EX: 4000 A 4999
+4001
+
+
+12-DIGITE A PORTA DO REDIS/ANGENDAMENTO NSG PARA SUA EMPRESA
+5001
+
+
+13-COLOQUE O NOME DO SEU USUÁRIO E SENHA 
+seu usuário do git hub
+
+14-COLOQUE O TOKEN GERADO NO SEU GITHUB 
+seu token do git hub
+
+
+15-COLOQUE A SENHA DO SEU USUÁRIO DEPLOY (a mesma que definiu logo no começo da instalação)
+zapiwaboot2025
 ```
