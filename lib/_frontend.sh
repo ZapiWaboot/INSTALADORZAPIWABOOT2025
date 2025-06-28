@@ -16,7 +16,7 @@ frontend_node_dependencies() {
 
   sudo su - deploy <<EOF
   cd /home/deploy/${instancia_add}/frontend
-  npm install --force
+  npm install
 EOF
 
   sleep 2
@@ -59,7 +59,7 @@ frontend_update() {
   pm2 stop ${empresa_atualizar}-frontend
   git pull
   cd /home/deploy/${empresa_atualizar}/frontend
-  npm install --force
+  npm install
   rm -rf build
   npm run build
   pm2 start ${empresa_atualizar}-frontend
@@ -90,10 +90,7 @@ frontend_set_env() {
 sudo su - deploy << EOF
   cat <<[-]EOF > /home/deploy/${instancia_add}/frontend/.env
 REACT_APP_BACKEND_URL=${backend_url}
-REACT_APP_FACEBOOK_APP_ID=
-REACT_APP_NAME_SYSTEM=
-REACT_APP_NUMBER_SUPPORT=
-
+REACT_APP_HOURS_CLOSE_TICKETS_AUTO = 24
 [-]EOF
 EOF
 

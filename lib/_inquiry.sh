@@ -11,7 +11,7 @@ get_mysql_root_password() {
 get_link_git() {
   
   print_banner
-  printf "${WHITE} 💻 Insira o link do GITHUB do ZAPI WABOOT que deseja instalar:${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Insira o link do GITHUB do ZAPI ZAPI WABOOT que deseja instalar:${GRAY_LIGHT}"
   printf "\n\n"
   read -p "> " link_git
 }
@@ -201,15 +201,14 @@ software_dominio() {
 inquiry_options() {
   
   print_banner
-  printf "${WHITE} 💻 Bem vindo(a) ao Gerenciador de instalações ZAPI WABOOT Selecione abaixo a proxima ação!${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Bem vindo(a) ao Gerenciador ZAPI WABOOT, Selecione abaixo a proxima ação!${GRAY_LIGHT}"
   printf "\n\n"
-  printf "   [0] Instalar Sistema\n"
-  printf "   [1] Atualizar Sistema\n"
-  printf "   [2] Deletar Sistema\n"
-  printf "   [3] Bloquear Sistema\n"
-  printf "   [4] Desbloquear Sistema\n"
-  printf "   [5] Alter. dominio Sistema\n"
-  printf "   [6] Gerador de Licença\n"
+  printf "   [0] Instalar ZAPI WABOOT\n"
+  printf "   [1] Atualizar ZAPI WABOOT\n"
+  printf "   [2] Deletar ZAPI WABOOT\n"
+  printf "   [3] Bloquear ZAPI WABOOT\n"
+  printf "   [4] Desbloquear ZAPI WABOOT\n"
+  printf "   [5] Alter. dominio ZAPI WABOOT\n"
   printf "\n"
   read -p "> " option
 
@@ -235,10 +234,6 @@ inquiry_options() {
       ;;
     5) 
       software_dominio 
-      exit
-      ;;
-    6)
-      license_menu
       exit
       ;;        
 

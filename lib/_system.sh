@@ -17,11 +17,6 @@ system_create_user() {
   sudo su - root <<EOF
   useradd -m -p $(openssl passwd -crypt ${mysql_root_password}) -s /bin/bash -G sudo deploy
   usermod -aG sudo deploy
-
-  #sudo su - root <<EOF
-  #useradd -m -p $(openssl passwd ${mysql_root_password}) -s /bin/bash -G sudo deploy
-  #usermod -aG sudo deploy
-
 EOF
 
   sleep 2
@@ -34,7 +29,7 @@ EOF
 #######################################
 system_git_clone() {
   print_banner
-  printf "${WHITE} 💻 Fazendo download do código Sistema...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Fazendo download do código ZAPI WABOOT...${GRAY_LIGHT}"
   printf "\n\n"
 
 
@@ -54,7 +49,7 @@ EOF
 #######################################
 system_update() {
   print_banner
-  printf "${WHITE} 💻 Vamos atualizar o sistema Sistema...${GRAY_LIGHT}"
+  printf "${WHITE} 💻 Vamos atualizar o sistema ZAPI WABOOT...${GRAY_LIGHT}"
   printf "\n\n"
 
   sleep 2
@@ -62,7 +57,6 @@ system_update() {
   sudo su - root <<EOF
   apt -y update
   sudo apt-get install -y libxshmfence-dev libgbm-dev wget unzip fontconfig locales gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils
-  sudo apt-get install -y ffmpeg
 EOF
 
   sleep 2
@@ -287,14 +281,14 @@ system_node_install() {
   sleep 2
 
   sudo su - root <<EOF
-  curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+  curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
   apt-get install -y nodejs
   sleep 2
   npm install -g npm@latest
   sleep 2
   sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
   wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-  sudo apt-get update -y && sudo apt-get -y install postgresql-15
+  sudo apt-get update -y && sudo apt-get -y install postgresql
   sleep 2
   sudo timedatectl set-timezone America/Sao_Paulo
   
@@ -315,32 +309,15 @@ system_docker_install() {
   sleep 2
 
   sudo su - root <<EOF
-  # Remove versões antigas se existirem
-  apt-get remove -y docker docker-engine docker.io containerd runc
+  apt install -y apt-transport-https \
+                 ca-certificates curl \
+                 software-properties-common
 
-  # Instala dependências necessárias
-  apt-get update
-  apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+  
+  add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 
-  # Adiciona a chave GPG oficial do Docker
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-  # Configura o repositório estável
-  echo \
-    "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
-
-  # Atualiza os pacotes e instala o Docker
-  apt-get update
-  apt-get install -y docker-ce docker-ce-cli containerd.io
-
-  # Adiciona o usuário deploy ao grupo docker
-  usermod -aG docker deploy
+  apt install -y docker-ce
 EOF
 
   sleep 2
@@ -559,29 +536,6 @@ system_certbot_setup() {
           --non-interactive \
           --domains $backend_domain,$frontend_domain
 
-EOF
-
-  sleep 2
-}
-
-#######################################
-# Remove os diretórios src do backend e frontend
-# Arguments:
-#   None
-#######################################
-remove_src_dirs() {
-  print_banner
-  printf "${WHITE} 💻 Removendo diretórios src para otimização...${GRAY_LIGHT}"
-  printf "\n\n"
-
-  sleep 2
-
-  sudo su - deploy <<EOF
-  cd /home/deploy/${instancia_add}/backend
-  rm -rf src
-  
-  cd /home/deploy/${instancia_add}/frontend
-  rm -rf src
 EOF
 
   sleep 2
